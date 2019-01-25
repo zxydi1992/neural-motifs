@@ -13,7 +13,7 @@ from nmotif.config import ModelConfig
 from nmotif.lib.pytorch_misc import optimistic_restore
 from nmotif.lib.evaluation.sg_eval import BasicSceneGraphEvaluator
 from tqdm import tqdm
-from conf import BOX_SCALE, IM_SCALE
+from nmotif.config import BOX_SCALE, IM_SCALE
 from lib.fpn.box_utils import bbox_overlaps
 from collections import defaultdict
 from PIL import Image, ImageDraw, ImageFont
