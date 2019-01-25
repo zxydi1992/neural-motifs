@@ -4,7 +4,7 @@
 # Licensed under The MIT License [see LICENSE for details]
 # Written by Ross Girshick and Sean Bell
 # --------------------------------------------------------
-from config import IM_SCALE
+from nmotif.config import IM_SCALE
 
 import numpy as np
 

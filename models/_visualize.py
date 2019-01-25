@@ -4,16 +4,16 @@ Visualization script. I used this to create the figures in the paper.
 WARNING: I haven't tested this in a while. It's possible that some later features I added break things here, but hopefully there should be easy fixes. I'm uploading this in the off chance it might help someone. If you get it to work, let me know (and also send a PR with bugs/etc)
 """
 
-from dataloaders.visual_genome import VGDataLoader, VG
-from lib.rel_model import RelModel
+from nmotif.dataloaders.visual_genome import VGDataLoader, VG
+from nmotif.lib.rel_model import RelModel
 import numpy as np
 import torch
 
-from config import ModelConfig
-from lib.pytorch_misc import optimistic_restore
-from lib.evaluation.sg_eval import BasicSceneGraphEvaluator
+from nmotif.config import ModelConfig
+from nmotif.lib.pytorch_misc import optimistic_restore
+from nmotif.lib.evaluation.sg_eval import BasicSceneGraphEvaluator
 from tqdm import tqdm
-from config import BOX_SCALE, IM_SCALE
+from conf import BOX_SCALE, IM_SCALE
 from lib.fpn.box_utils import bbox_overlaps
 from collections import defaultdict
 from PIL import Image, ImageDraw, ImageFont

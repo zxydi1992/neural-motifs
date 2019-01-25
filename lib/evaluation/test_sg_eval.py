@@ -2,10 +2,10 @@
 
 import numpy as np
 from six.moves import xrange
-from dataloaders.visual_genome import VG
-from lib.evaluation.sg_eval import evaluate_from_dict
+from nmotif.dataloaders.visual_genome import VG
+from nmotif.lib.evaluation.sg_eval import evaluate_from_dict
 from tqdm import trange
-from lib.fpn.box_utils import center_size, point_form
+from nmotif.lib.fpn.box_utils import center_size, point_form
 def eval_relation_recall(sg_entry,
                          roidb_entry,
                          result_dict,

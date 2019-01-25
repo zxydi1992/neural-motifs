@@ -1,9 +1,9 @@
 
 import numpy as np
 import numpy.random as npr
-from config import BG_THRESH_HI, BG_THRESH_LO, FG_FRACTION, ROIS_PER_IMG
-from lib.fpn.box_utils import bbox_overlaps
-from lib.pytorch_misc import to_variable
+from nmotif.config import BG_THRESH_HI, BG_THRESH_LO, FG_FRACTION, ROIS_PER_IMG
+from nmotif.lib.fpn.box_utils import bbox_overlaps
+from nmotif.lib.pytorch_misc import to_variable
 import torch
 
 #############################################################

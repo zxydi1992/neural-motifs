@@ -1,7 +1,7 @@
 """
 Data blob, hopefully to make collating less painful and MGPU training possible
 """
-from lib.fpn.anchor_targets import anchor_target_layer
+from nmotif.lib.fpn.anchor_targets import anchor_target_layer
 import numpy as np
 import torch
 from torch.autograd import Variable

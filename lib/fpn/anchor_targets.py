@@ -7,10 +7,10 @@ Heavily adapted from faster_rcnn/rpn_msr/anchor_target_layer.py.
 import numpy as np
 import numpy.random as npr
 
-from config import IM_SCALE, RPN_NEGATIVE_OVERLAP, RPN_POSITIVE_OVERLAP, \
+from nmotif.config import IM_SCALE, RPN_NEGATIVE_OVERLAP, RPN_POSITIVE_OVERLAP, \
     RPN_BATCHSIZE, RPN_FG_FRACTION, ANCHOR_SIZE, ANCHOR_SCALES, ANCHOR_RATIOS
-from lib.fpn.box_intersections_cpu.bbox import bbox_overlaps
-from lib.fpn.generate_anchors import generate_anchors
+from nmotif.lib.fpn.box_intersections_cpu.bbox import bbox_overlaps
+from nmotif.lib.fpn.generate_anchors import generate_anchors
 
 
 def anchor_target_layer(gt_boxes, im_size, 

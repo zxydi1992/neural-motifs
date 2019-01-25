@@ -1,13 +1,13 @@
-from config import COCO_PATH, IM_SCALE, BOX_SCALE
+from nmotif.config import COCO_PATH, IM_SCALE, BOX_SCALE
 import os
 from torch.utils.data import Dataset
 from pycocotools.coco import COCO
 from PIL import Image
-from lib.fpn.anchor_targets import anchor_target_layer
+from nmotif.lib.fpn.anchor_targets import anchor_target_layer
 from torchvision.transforms import Resize, Compose, ToTensor, Normalize
-from dataloaders.image_transforms import SquarePad, Grayscale, Brightness, Sharpness, Contrast, RandomOrder, Hue, random_crop
+from nmotif.dataloaders.image_transforms import SquarePad, Grayscale, Brightness, Sharpness, Contrast, RandomOrder, Hue, random_crop
 import numpy as np
-from dataloaders.blob import Blob
+from nmotif.dataloaders.blob import Blob
 import torch
 
 class CocoDetection(Dataset):

@@ -2,7 +2,7 @@
 Training script for scene graph detection. Integrated with my faster rcnn setup
 """
 
-from dataloaders.visual_genome import VGDataLoader, VG
+from nmotif.dataloaders.visual_genome import VGDataLoader, VG
 import numpy as np
 from torch import optim
 import torch
@@ -10,18 +10,18 @@ import pandas as pd
 import time
 import os
 
-from config import ModelConfig, BOX_SCALE, IM_SCALE
+from nmotif.config import ModelConfig, BOX_SCALE, IM_SCALE
 from torch.nn import functional as F
-from lib.pytorch_misc import optimistic_restore, de_chunkize, clip_grad_norm
-from lib.evaluation.sg_eval import BasicSceneGraphEvaluator
-from lib.pytorch_misc import print_para
+from nmotif.lib.pytorch_misc import optimistic_restore, de_chunkize, clip_grad_norm
+from nmotif.lib.evaluation.sg_eval import BasicSceneGraphEvaluator
+from nmotif.lib.pytorch_misc import print_para
 from torch.optim.lr_scheduler import ReduceLROnPlateau
 
 conf = ModelConfig()
 if conf.model == 'motifnet':
-    from lib.rel_model import RelModel
+    from nmotif.lib.rel_model import RelModel
 elif conf.model == 'stanford':
-    from lib.rel_model_stanford import RelModelStanford as RelModel
+    from nmotif.lib.rel_model_stanford import RelModelStanford as RelModel
 else:
     raise ValueError()
 

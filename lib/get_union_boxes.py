@@ -5,12 +5,12 @@ credits to https://github.com/ruotianluo/pytorch-faster-rcnn/blob/master/lib/net
 import torch
 from torch.autograd import Variable
 from torch.nn import functional as F
-from lib.fpn.roi_align.functions.roi_align import RoIAlignFunction
-from lib.draw_rectangles.draw_rectangles import draw_union_boxes
+from nmotif.lib.fpn.roi_align.functions.roi_align import RoIAlignFunction
+from nmotif.lib.draw_rectangles.draw_rectangles import draw_union_boxes
 import numpy as np
 from torch.nn.modules.module import Module
 from torch import nn
-from config import BATCHNORM_MOMENTUM
+from nmotif.config import BATCHNORM_MOMENTUM
 
 class UnionBoxesAndFeats(Module):
     def __init__(self, pooling_size=7, stride=16, dim=256, concat=False, use_feats=True):

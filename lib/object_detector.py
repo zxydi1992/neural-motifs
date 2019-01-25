@@ -5,15 +5,15 @@ import torch.nn.parallel
 from torch.autograd import Variable
 from torch.nn import functional as F
 
-from config import ANCHOR_SIZE, ANCHOR_RATIOS, ANCHOR_SCALES
-from lib.fpn.generate_anchors import generate_anchors
-from lib.fpn.box_utils import bbox_preds, center_size, bbox_overlaps
-from lib.fpn.nms.functions.nms import apply_nms
-from lib.fpn.proposal_assignments.proposal_assignments_gtbox import proposal_assignments_gtbox
-from lib.fpn.proposal_assignments.proposal_assignments_det import proposal_assignments_det
+from nmotif.config import ANCHOR_SIZE, ANCHOR_RATIOS, ANCHOR_SCALES
+from nmotif.lib.fpn.generate_anchors import generate_anchors
+from nmotif.lib.fpn.box_utils import bbox_preds, center_size, bbox_overlaps
+from nmotif.lib.fpn.nms.functions.nms import apply_nms
+from nmotif.lib.fpn.proposal_assignments.proposal_assignments_gtbox import proposal_assignments_gtbox
+from nmotif.lib.fpn.proposal_assignments.proposal_assignments_det import proposal_assignments_det
 
-from lib.fpn.roi_align.functions.roi_align import RoIAlignFunction
-from lib.pytorch_misc import enumerate_by_image, gather_nd, diagonal_inds, Flattener
+from nmotif.lib.fpn.roi_align.functions.roi_align import RoIAlignFunction
+from nmotif.lib.pytorch_misc import enumerate_by_image, gather_nd, diagonal_inds, Flattener
 from torchvision.models.vgg import vgg16
 from torchvision.models.resnet import resnet101
 from torch.nn.parallel._functions import Gather

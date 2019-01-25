@@ -1,8 +1,8 @@
-from lib.pytorch_misc import enumerate_by_image, gather_nd, random_choose
-from lib.fpn.box_utils import bbox_preds, center_size, bbox_overlaps
+from nmotif.lib.pytorch_misc import enumerate_by_image, gather_nd, random_choose
+from nmotif.lib.fpn.box_utils import bbox_preds, center_size, bbox_overlaps
 import torch
-from lib.pytorch_misc import diagonal_inds, to_variable
-from config import RELS_PER_IMG, REL_FG_FRACTION
+from nmotif.lib.pytorch_misc import diagonal_inds, to_variable
+from nmotif.config import RELS_PER_IMG, REL_FG_FRACTION
 
 
 @to_variable

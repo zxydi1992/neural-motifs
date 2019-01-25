@@ -13,8 +13,8 @@ boxes, objs, rels, pred_scores
 
 import numpy as np
 import torch
-from lib.pytorch_misc import unravel_index
-from lib.fpn.box_utils import bbox_overlaps
+from nmotif.lib.pytorch_misc import unravel_index
+from nmotif.lib.fpn.box_utils import bbox_overlaps
 # from ad3 import factor_graph as fg
 from time import time
 

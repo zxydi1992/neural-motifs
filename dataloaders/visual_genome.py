@@ -11,10 +11,10 @@ import torch
 from PIL import Image
 from torch.utils.data import Dataset
 from torchvision.transforms import Resize, Compose, ToTensor, Normalize
-from dataloaders.blob import Blob
-from lib.fpn.box_intersections_cpu.bbox import bbox_overlaps
-from config import VG_IMAGES, IM_DATA_FN, VG_SGG_FN, VG_SGG_DICT_FN, BOX_SCALE, IM_SCALE, PROPOSAL_FN
-from dataloaders.image_transforms import SquarePad, Grayscale, Brightness, Sharpness, Contrast, \
+from nmotif.dataloaders.blob import Blob
+from nmotif.lib.fpn.box_intersections_cpu.bbox import bbox_overlaps
+from nmotif.config import VG_IMAGES, IM_DATA_FN, VG_SGG_FN, VG_SGG_DICT_FN, BOX_SCALE, IM_SCALE, PROPOSAL_FN
+from nmotif.dataloaders.image_transforms import SquarePad, Grayscale, Brightness, Sharpness, Contrast, \
     RandomOrder, Hue, random_crop
 from collections import defaultdict
 from pycocotools.coco import COCO

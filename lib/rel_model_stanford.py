@@ -7,11 +7,11 @@ import torch.nn as nn
 import torch.nn.parallel
 from torch.autograd import Variable
 from torch.nn import functional as F
-from lib.surgery import filter_dets
-from lib.fpn.proposal_assignments.rel_assignments import rel_assignments
-from lib.pytorch_misc import arange
-from lib.object_detector import filter_det
-from lib.rel_model import RelModel
+from nmotif.lib.surgery import filter_dets
+from nmotif.lib.fpn.proposal_assignments.rel_assignments import rel_assignments
+from nmotif.lib.pytorch_misc import arange
+from nmotif.lib.object_detector import filter_det
+from nmotif.lib.rel_model import RelModel
 
 MODES = ('sgdet', 'sgcls', 'predcls')
 

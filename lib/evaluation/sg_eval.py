@@ -3,9 +3,9 @@ Adapted from Danfei Xu. In particular, slow code was removed
 """
 import numpy as np
 from functools import reduce
-from lib.pytorch_misc import intersect_2d, argsort_desc
-from lib.fpn.box_intersections_cpu.bbox import bbox_overlaps
-from config import MODES
+from nmotif.lib.pytorch_misc import intersect_2d, argsort_desc
+from nmotif.lib.fpn.box_intersections_cpu.bbox import bbox_overlaps
+from nmotif.config import MODES
 np.set_printoptions(precision=3)
 
 class BasicSceneGraphEvaluator:

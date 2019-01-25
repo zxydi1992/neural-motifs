@@ -1,21 +1,21 @@
 
-from dataloaders.visual_genome import VGDataLoader, VG
+from nmotif.dataloaders.visual_genome import VGDataLoader, VG
 import numpy as np
 import torch
 
-from config import ModelConfig
-from lib.pytorch_misc import optimistic_restore
-from lib.evaluation.sg_eval import BasicSceneGraphEvaluator
+from nmotif.config import ModelConfig
+from nmotif.lib.pytorch_misc import optimistic_restore
+from nmotif.lib.evaluation.sg_eval import BasicSceneGraphEvaluator
 from tqdm import tqdm
-from config import BOX_SCALE, IM_SCALE
+from nmotif.config import BOX_SCALE, IM_SCALE
 import dill as pkl
 import os
 
 conf = ModelConfig()
 if conf.model == 'motifnet':
-    from lib.rel_model import RelModel
+    from nmotif.lib.rel_model import RelModel
 elif conf.model == 'stanford':
-    from lib.rel_model_stanford import RelModelStanford as RelModel
+    from nmotif.lib.rel_model_stanford import RelModelStanford as RelModel
 else:
     raise ValueError()
 

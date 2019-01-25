@@ -1,6 +1,6 @@
 # JUST TO CHECK THAT IT IS EXACTLY THE SAME..................................
 import numpy as np
-from config import MODES
+from nmotif.config import MODES
 
 class BasicSceneGraphEvaluator:
 

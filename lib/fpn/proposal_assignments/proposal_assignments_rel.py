@@ -5,10 +5,10 @@
 
 import numpy as np
 import numpy.random as npr
-from config import BG_THRESH_HI, BG_THRESH_LO, FG_FRACTION_REL, ROIS_PER_IMG_REL, REL_FG_FRACTION, \
+from nmotif.config import BG_THRESH_HI, BG_THRESH_LO, FG_FRACTION_REL, ROIS_PER_IMG_REL, REL_FG_FRACTION, \
     RELS_PER_IMG
-from lib.fpn.box_utils import bbox_overlaps
-from lib.pytorch_misc import to_variable, nonintersecting_2d_inds
+from nmotif.lib.fpn.box_utils import bbox_overlaps
+from nmotif.lib.pytorch_misc import to_variable, nonintersecting_2d_inds
 from collections import defaultdict
 import torch
 

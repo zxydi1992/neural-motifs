@@ -3,7 +3,7 @@ import math
 import torch.utils.model_zoo as model_zoo
 from torchvision.models.resnet import model_urls, conv3x3, BasicBlock
 from torchvision.models.vgg import vgg16
-from config import BATCHNORM_MOMENTUM
+from nmotif.config import BATCHNORM_MOMENTUM
 
 class Bottleneck(nn.Module):
     expansion = 4

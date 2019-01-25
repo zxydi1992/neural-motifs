@@ -1,11 +1,11 @@
-from lib.word_vectors import obj_edge_vectors
+from nmotif.lib.word_vectors import obj_edge_vectors
 import torch.nn as nn
 import torch
 from torch.autograd import Variable
 import numpy as np
-from config import DATA_PATH
+from nmotif.config import DATA_PATH
 import os
-from lib.get_dataset_counts import get_counts
+from nmotif.lib.get_dataset_counts import get_counts
 
 
 class FrequencyBias(nn.Module):

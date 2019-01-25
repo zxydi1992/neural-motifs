@@ -6,17 +6,17 @@ Also, caches this (we can use this for training).
 The model is quite simple, so we don't use the base train/test code
 
 """
-from dataloaders.visual_genome import VGDataLoader, VG
-from lib.object_detector import ObjectDetector
+from nmotif.dataloaders.visual_genome import VGDataLoader, VG
+from nmotif.lib.object_detector import ObjectDetector
 import numpy as np
 import torch
 import os
-from lib.get_dataset_counts import get_counts, box_filter
+from nmotif.lib.get_dataset_counts import get_counts, box_filter
 
-from config import ModelConfig, FG_FRACTION, RPN_FG_FRACTION, DATA_PATH, BOX_SCALE, IM_SCALE, PROPOSAL_FN
+from nmotif.config import ModelConfig, FG_FRACTION, RPN_FG_FRACTION, DATA_PATH, BOX_SCALE, IM_SCALE, PROPOSAL_FN
 import torch.backends.cudnn as cudnn
-from lib.pytorch_misc import optimistic_restore, nonintersecting_2d_inds
-from lib.evaluation.sg_eval import BasicSceneGraphEvaluator
+from nmotif.lib.pytorch_misc import optimistic_restore, nonintersecting_2d_inds
+from nmotif.lib.evaluation.sg_eval import BasicSceneGraphEvaluator
 from tqdm import tqdm
 from copy import deepcopy
 import dill as pkl

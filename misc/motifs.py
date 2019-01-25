@@ -2,13 +2,13 @@
 SCRIPT TO MAKE MEMES. this was from an old version of the code, so it might require some fixes to get working.
 
 """
-from dataloaders.visual_genome import VG
+from nmotif.dataloaders.visual_genome import VG
 # import matplotlib
 # # matplotlib.use('Agg')
 from tqdm import tqdm
 import seaborn as sns
 import numpy as np
-from lib.fpn.box_intersections_cpu.bbox import bbox_overlaps
+from nmotif.lib.fpn.box_intersections_cpu.bbox import bbox_overlaps
 from collections import defaultdict
 train, val, test = VG.splits(filter_non_overlap=False, num_val_im=2000)
 

@@ -11,7 +11,7 @@ import torch
 from six.moves.urllib.request import urlretrieve
 from tqdm import tqdm
 
-from config import DATA_PATH
+from nmotif.config import DATA_PATH
 import sys
 
 def obj_edge_vectors(names, wv_type='glove.6B', wv_dir=DATA_PATH, wv_dim=300):

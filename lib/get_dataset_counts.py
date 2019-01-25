@@ -4,9 +4,9 @@ dictionary model
 """
 
 import numpy as np
-from dataloaders.visual_genome import VG
-from lib.fpn.box_intersections_cpu.bbox import bbox_overlaps
-from lib.pytorch_misc import nonintersecting_2d_inds
+from nmotif.dataloaders.visual_genome import VG
+from nmotif.lib.fpn.box_intersections_cpu.bbox import bbox_overlaps
+from nmotif.lib.pytorch_misc import nonintersecting_2d_inds
 
 
 def get_counts(train_data=VG(mode='train', filter_duplicate_rels=False, num_val_im=5000), must_overlap=True):
