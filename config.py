@@ -17,7 +17,7 @@ def stanford_path(fn):
 # =============================================================================
 # Update these with where your data is stored ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-VG_IMAGES = os.environ['VG_IMAGES']
+VG_IMAGES = os.environ.get('VG_IMAGES', '')
 RCNN_CHECKPOINT_FN = path('faster_rcnn_500k.h5')
 
 IM_DATA_FN = stanford_path('image_data.json')
@@ -25,7 +25,7 @@ VG_SGG_FN = stanford_path('VG-SGG.h5')
 VG_SGG_DICT_FN = stanford_path('VG-SGG-dicts.json')
 PROPOSAL_FN = stanford_path('proposals.h5')
 
-COCO_PATH = os.environ['COCO_PATH']
+COCO_PATH = os.environ.get('COCO_PATH', '')
 # =============================================================================
 # =============================================================================
 
