@@ -139,7 +139,7 @@ class ObjectDetector(nn.Module):
         return self.roi_fmap(feature_pool.view(rois.size(0), -1))
 
     def rpn_boxes(self, fmap, im_sizes, image_offset, gt_boxes=None, gt_classes=None, gt_rels=None,
-                  train_anchor_inds=None, proposals=None):
+                  train_anchor_inds=None, proposals=None, nms_thresh=0.7):
         """
         Gets boxes from the RPN
         :param fmap:
@@ -153,7 +153,7 @@ class ObjectDetector(nn.Module):
         """
         rpn_feats = self.rpn_head(fmap)
         rois = self.rpn_head.roi_proposals(
-            rpn_feats, im_sizes, nms_thresh=0.7,
+            rpn_feats, im_sizes, nms_thresh=nms_thresh,
             pre_nms_topn=12000 if self.training and self.mode == 'rpntrain' else 6000,
             post_nms_topn=2000 if self.training and self.mode == 'rpntrain' else 1000,
         )
