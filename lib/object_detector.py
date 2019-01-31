@@ -306,7 +306,7 @@ class ObjectDetector(nn.Module):
         od_box_priors = rois[:, 1:]
 
         if (not self.training and not self.mode == 'gtbox') or self.mode in ('proposals', 'refinerels'):
-            nms_inds, nms_scores, nms_preds, nms_boxes_assign, nms_boxes, nms_imgs = self.nms_boxes(
+            nms_inds, nms_scores, nms_preds, nms_boxes_assign, nms_boxes, nms_imgs, nms_logits = self.nms_boxes(
                 od_obj_dists,
                 rois,
                 od_box_deltas, im_sizes,
@@ -390,7 +390,7 @@ class ObjectDetector(nn.Module):
             boxes[s:e, :, 2].data.clamp_(min=0, max=w - 1)
             boxes[s:e, :, 3].data.clamp_(min=0, max=h - 1)
             d_filtered = filter_det(
-                F.softmax(obj_dists[s:e], 1), boxes[s:e], start_ind=s,
+                F.softmax(obj_dists[s:e], 1), obj_dists[s:e], boxes[s:e], start_ind=s,
                 nms_filter_duplicates=self.nms_filter_duplicates,
                 max_per_img=self.max_per_img,
                 thresh=self.thresh,
@@ -401,12 +401,12 @@ class ObjectDetector(nn.Module):
         if len(dets) == 0:
             print("nothing was detected", flush=True)
             return None
-        nms_inds, nms_scores, nms_labels = [torch.cat(x, 0) for x in zip(*dets)]
+        nms_inds, nms_scores, nms_labels, nms_logits = [torch.cat(x, 0) for x in zip(*dets)]
         twod_inds = nms_inds * boxes.size(1) + nms_labels.data
         nms_boxes_assign = boxes.view(-1, 4)[twod_inds]
 
         nms_boxes = torch.cat((rois[:, 1:][nms_inds][:, None], boxes[nms_inds][:, 1:]), 1)
-        return nms_inds, nms_scores, nms_labels, nms_boxes_assign, nms_boxes, inds[nms_inds]
+        return nms_inds, nms_scores, nms_labels, nms_boxes_assign, nms_boxes, inds[nms_inds], nms_logits
 
     def __getitem__(self, batch):
         """ Hack to do multi-GPU training"""
@@ -423,7 +423,7 @@ class ObjectDetector(nn.Module):
         return gather_res(outputs, 0, dim=0)
 
 
-def filter_det(scores, boxes, start_ind=0, max_per_img=100, thresh=0.001, pre_nms_topn=6000,
+def filter_det(scores, boxes, logits, start_ind=0, max_per_img=100, thresh=0.001, pre_nms_topn=6000,
                post_nms_topn=300, nms_thresh=0.3, nms_filter_duplicates=True):
     """
     Filters the detections for a single image
@@ -480,10 +480,11 @@ def filter_det(scores, boxes, start_ind=0, max_per_img=100, thresh=0.001, pre_nm
 
     inds_all = inds_all[idx] + start_ind
     scores_all = Variable(scores_all[idx], volatile=True)
-    labels_all = Variable(labels_all[idx], volatile=True)
+    labels_all = labels_all[idx]
+    logits_all = logits[idx]
     # dists_all = dists_all[idx]
 
-    return inds_all, scores_all, labels_all
+    return inds_all, scores_all, labels_all, logits_all
 
 
 class RPNHead(nn.Module):
