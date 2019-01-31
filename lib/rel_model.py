@@ -305,7 +305,7 @@ class RelModel(nn.Module):
                  nl_obj=1, nl_edge=2, use_resnet=False, order='confidence', thresh=0.01,
                  use_proposals=False, pass_in_obj_feats_to_decoder=True,
                  pass_in_obj_feats_to_edge=True, rec_dropout=0.0, use_bias=True, use_tanh=True,
-                 limit_vision=True):
+                 limit_vision=True, nonvolatile=False):
 
         """
         :param classes: Object classes
@@ -337,12 +337,14 @@ class RelModel(nn.Module):
         self.limit_vision=limit_vision
         self.require_overlap = require_overlap_det and self.mode == 'sgdet'
 
+        self.nonvolatile = nonvolatile
         self.detector = ObjectDetector(
             classes=classes,
             mode=('proposals' if use_proposals else 'refinerels') if mode == 'sgdet' else 'gtbox',
             use_resnet=use_resnet,
             thresh=thresh,
             max_per_img=64,
+            nonvolatile=nonvolatile
         )
 
         self.context = LinearizedContext(self.classes, self.rel_classes, mode=self.mode,

@@ -55,7 +55,7 @@ class ObjectDetector(nn.Module):
     MODES = ('rpntrain', 'gtbox', 'refinerels', 'proposals')
 
     def __init__(self, classes, mode='rpntrain', num_gpus=1, nms_filter_duplicates=True,
-                 max_per_img=64, use_resnet=False, thresh=0.05):
+                 max_per_img=64, use_resnet=False, thresh=0.05, nonvolatile=False):
         """
         :param classes: Object classes
         :param rel_classes: Relationship classes. None if were not using rel mode
@@ -102,6 +102,7 @@ class ObjectDetector(nn.Module):
         self.score_fc = nn.Linear(output_dim, self.num_classes)
         self.bbox_fc = nn.Linear(output_dim, self.num_classes * 4)
         self.rpn_head = RPNHead(dim=512, input_dim=rpn_input_dim)
+        self.nonvolatile = nonvolatile
 
     @property
     def num_classes(self):
@@ -188,7 +189,7 @@ class ObjectDetector(nn.Module):
                 rel_labels = None
 
         else:
-            all_rois = Variable(rois, volatile=True)
+            all_rois = Variable(rois, volatile=not self.nonvolatile)
             labels = None
             bbox_targets = None
             rel_labels = None
