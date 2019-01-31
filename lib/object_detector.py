@@ -480,7 +480,7 @@ def filter_det(scores, boxes, logits, start_ind=0, max_per_img=100, thresh=0.001
 
     inds_all = inds_all[idx] + start_ind
     scores_all = Variable(scores_all[idx], volatile=True)
-    labels_all = labels_all[idx]
+    labels_all = Variable(labels_all[idx])
     logits_all = logits[idx]
     # dists_all = dists_all[idx]
 
