@@ -27,11 +27,12 @@ int highway_lstm_forward_cuda(int inputSize, int hiddenSize, int miniBatch,
     float * bias_ptr = THCudaTensor_data(state, bias);
     float * dropout_ptr = THCudaTensor_data(state, dropout);
     float * gates_ptr;
-    if (isTraining == 1) {
-        gates_ptr = THCudaTensor_data(state, gates);
-    } else {
-        gates_ptr = NULL;
-    }
+//    if (isTraining == 1) {
+//        gates_ptr = THCudaTensor_data(state, gates);
+//    } else {
+//        gates_ptr = NULL;
+//    }
+    gates_ptr = THCudaTensor_data(state, gates);
 
     cudaStream_t stream = THCState_getCurrentStream(state);
     cublasHandle_t handle = THCState_getCurrentBlasHandle(state);
