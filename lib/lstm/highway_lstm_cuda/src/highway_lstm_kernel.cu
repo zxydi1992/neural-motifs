@@ -139,14 +139,14 @@ __global__ void elementWise_fp(int hiddenSize, int miniBatch, int numCovered,
    float r_gate      = sigmoidf(g[4]);
    float lin_gate    = g[5];
 
-   if (training == 1) {
-       linearGates[i_gateIndex] = in_gate;
-       linearGates[i_gateIndex + 1 * hiddenSize] = forget_gate;
-       linearGates[i_gateIndex + 2 * hiddenSize] = act_gate;
-       linearGates[i_gateIndex + 3 * hiddenSize] = out_gate;
-       linearGates[i_gateIndex + 4 * hiddenSize] = r_gate;
-       linearGates[i_gateIndex + 5 * hiddenSize] = lin_gate;
-   }
+   // if (training == 1) {
+   linearGates[i_gateIndex] = in_gate;
+   linearGates[i_gateIndex + 1 * hiddenSize] = forget_gate;
+   linearGates[i_gateIndex + 2 * hiddenSize] = act_gate;
+   linearGates[i_gateIndex + 3 * hiddenSize] = out_gate;
+   linearGates[i_gateIndex + 4 * hiddenSize] = r_gate;
+   linearGates[i_gateIndex + 5 * hiddenSize] = lin_gate;
+   //}
    
    float val = (forget_gate * c_in[index]) + (in_gate * act_gate);
    
